@@ -114,15 +114,15 @@ apt-get purge libapache2-mod-php5filter > /dev/null
 echo "Setting up Apache2 Config File..."
 cd /etc/apache2/sites-enabled/
 rm -rf *
-wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.8-ubuntu-20.04/main/000-default.conf
+wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.10-ubuntu-22.02/main/000-default.conf
 cd /etc/apache2/
 rm -rf ports.conf
-wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.8-ubuntu-20.04/main/ports.conf
+wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.10-ubuntu-22.02/main/ports.conf
 
 echo "Setting up Nginx Config File..."
 cd /etc/nginx/sites-available/
 rm -rf default
-wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.8-ubuntu-20.04/main/default
+wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.10-ubuntu-22.02/main/default
 
 echo "Restarting Apache2 & Nginx..."
 /etc/init.d/apache2 restart
@@ -134,13 +134,13 @@ chmod 777 /var/www/.npm
 
 echo "Patching Composer..."
 cd /var/www/html/stalker_portal/deploy
-wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.8-ubuntu-20.04/main/composer_version_1.9.1.patch
+wget https://raw.githubusercontent.com/JerryLutor/ministra-5.6.10-ubuntu-22.02/main/composer_version_1.9.1.patch
 patch build.xml < composer_version_1.9.1.patch
 rm composer_version_1.9.1.patch
 
 echo "Installing custom.ini..."
 cd /var/www/html/stalker_portal/server
-wget -O custom.ini https://raw.githubusercontent.com/JerryLutor/ministra-5.6.8-ubuntu-20.04/main/custom.ini
+wget -O custom.ini https://raw.githubusercontent.com/JerryLutor/ministra-5.6.10-ubuntu-22.02/main/custom.ini
 
 echo "Running Phing..."
 sed -i "s/mysql_pass = 1/mysql_pass = $stalkerpass/g" /var/www/html/stalker_portal/server/config.ini
