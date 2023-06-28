@@ -94,7 +94,7 @@ service mysql restart
 echo "Installing Ministra..."
 cd /var/www/html/
 wget $ministra_source
-unzip Ministra_TV_Platform_5.6.8.zip
+unzip ministra-5.6.10.zip
 rm -rf *.zip
 rm /var/www/html/index*
 touch /var/www/html/index.php
